@@ -1,8 +1,36 @@
 # Vehicle Tracking and Counting Using Yolo V8 and DeepSORT
 
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
+
 In this project, we will perform vehicle tracking and counting using YOLOv8 and DeepSORT (Deep Simple Online and Realtime Tracking).
 
-## 1. Installation
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [Getting Started](#getting-started)
+   - [Prerequisites](#prerequisites)
+   - [Installation](#installation)
+3. [Project Structure](#project-structure)
+4. [Training](#training)
+   - [Data Preparation](#data-preparation)
+   - [Model Configuration](#model-configuration)
+   - [Training Process](#training-process)
+5. [Inference](#inference)
+6. [Performance Tuning](#performance-tuning)
+
+## 1. Introduction
+
+The ability to perform both semantic segmentation and depth estimation in real-time has applications in autonomous driving, robotics, augmented reality, and more. This project aims to provide a practical and accessible implementation of a multi-task network capable of handling these tasks simultaneously.
+
+### 1.1. A brief explanation of the Model
+
+YOLOv8 (You Only Look Once version 8) is an object detection algorithm that operates by dividing the input image into a grid and predicting bounding boxes and class probabilities directly from a single neural network evaluation. YOLOv8 improves upon its predecessors by incorporating advancements such as a feature pyramid network, anchor box clustering, and advanced training techniques like multi-scale training and data augmentation. It leverages a deep convolutional architecture, typically based on Darknet or similar frameworks, to efficiently process images and make predictions in real-time. YOLOv8 excels in various computer vision tasks, including object detection in images and videos, due to its balance between accuracy, speed, and simplicity, making it widely utilized in applications ranging from autonomous vehicles to surveillance systems.
+
+DeepSORT (Deep Learning-based SORT) is a tracking algorithm that combines the Simple Online and Realtime Tracking (SORT) algorithm with deep learning techniques to achieve robust and accurate object tracking in videos. It integrates a deep association metric to improve the matching process between detections in consecutive frames, enabling it to handle occlusions, clutter, and appearance changes more effectively. DeepSORT utilizes a convolutional neural network (CNN) to generate embeddings representing the appearance of detected objects, which are then used to compute similarity scores for association. By incorporating both motion and appearance cues, DeepSORT achieves state-of-the-art performance in multi-object tracking tasks, making it a widely adopted solution in various real-world applications such as surveillance, autonomous driving, and sports analytics.
+
+
+## 2. Getting Started
 
 **Dependencies:**
 - Python 3.x
