@@ -5,20 +5,6 @@
 
 In this project, we will perform vehicle tracking and counting using YOLOv8 and DeepSORT (Deep Simple Online and Realtime Tracking).
 
-## Table of Contents
-
-1. [Introduction](#introduction)
-2. [Getting Started](#getting-started)
-   - [Prerequisites](#prerequisites)
-   - [Installation](#installation)
-3. [Project Structure](#project-structure)
-4. [Training](#training)
-   - [Data Preparation](#data-preparation)
-   - [Model Configuration](#model-configuration)
-   - [Training Process](#training-process)
-5. [Inference](#inference)
-6. [Performance Tuning](#performance-tuning)
-
 ## 1. Introduction
 
 The ability to perform both semantic segmentation and depth estimation in real-time has applications in autonomous driving, robotics, augmented reality, and more. This project aims to provide a practical and accessible implementation of a multi-task network capable of handling these tasks simultaneously.
