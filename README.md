@@ -1,7 +1,7 @@
-**Vehicle Tracking and Counting Using Yolo V8, Sort, and Deep Sort**
+**Vehicle Tracking and Counting Using Yolo V8 and Deep Sort**
 
 **Introduction:**
-This document provides an overview of a vehicle tracking project utilizing YOLOv8 (You Only Look Once version 8) for object detection and multiple tracking algorithms including SORT (Simple Online and Realtime Tracking) and DeepSORT (Deep Simple Online and Realtime Tracking).
+This document provides an overview of a vehicle tracking project utilizing YOLOv8 (You Only Look Once version 8) for object detection and DeepSORT (Deep Simple Online and Realtime Tracking).
 
 **Objective:**
 The main goal of this project is to develop a robust system for real-time vehicle tracking in video streams or recorded footage. By leveraging deep learning-based object detection and tracking algorithms, the system aims to accurately identify and track vehicles in various scenarios.
@@ -9,9 +9,8 @@ The main goal of this project is to develop a robust system for real-time vehicl
 **Dependencies:**
 - Python 3.x
 - OpenCV
-- TensorFlow or PyTorch (for YOLOv8)
+- PyTorch (for YOLOv8)
 - NumPy
-- SORT algorithm implementation (e.g., https://github.com/abewley/sort)
 - DeepSORT algorithm implementation (e.g., https://github.com/nwojke/deep_sort)
 
 **Installation:**
