@@ -1,10 +1,8 @@
-**Vehicle Tracking and Counting Using Yolo V8 and DeepSORT**
+# Vehicle Tracking and Counting Using Yolo V8 and DeepSORT
 
-**Introduction:**
-This document provides an overview of a vehicle tracking project utilizing YOLOv8 (You Only Look Once version 8) for object detection and DeepSORT (Deep Simple Online and Realtime Tracking).
+In this project, we will perform vehicle tracking and counting using YOLOv8 and DeepSORT (Deep Simple Online and Realtime Tracking).
 
-**Objective:**
-The main goal of this project is to develop a robust system for real-time vehicle tracking in video streams or recorded footage. By leveraging deep learning-based object detection and tracking algorithms, the system aims to accurately identify and track vehicles in various scenarios.
+## 1. Installation
 
 **Dependencies:**
 - Python 3.x
@@ -31,7 +29,7 @@ The main goal of this project is to develop a robust system for real-time vehicl
 
 **Functionality:**
 - **Object Detection (YOLOv8):** YOLOv8 is used to detect vehicles in each frame of the input video stream.
-- **Tracking (SORT and DeepSORT):** After detection, SORT or DeepSORT algorithm is employed to assign unique IDs to each detected vehicle and track them across frames.
+- **Tracking (SORT and DeepSORT):** After detection, DeepSORT algorithm is employed to assign unique IDs to each detected vehicle and track them across frames.
 - **Visualization:** The tracked vehicles can be visualized using bounding boxes and unique IDs on the video frames.
 
 **Example Code:**
@@ -79,17 +77,6 @@ cap.release()
 cv2.destroyAllWindows()
 ```
 
-**Contributing:**
-Contributions to this project are welcome. If you find any issues or have suggestions for improvements, please feel free to submit a pull request.
-
-**License:**
-This project is licensed under the [MIT License](LICENSE).
-
-**Acknowledgments:**
-- YOLOv8: Citation to the original YOLOv8 implementation.
-- SORT: Citation to the SORT tracker implementation.
-- DeepSORT: Citation to the DeepSORT tracker implementation.
-
-**References:**
+## References
 - YOLOv8 Paper: [Link to YOLOv8 paper]
 - DeepSORT Paper: [Link to DeepSORT paper]
