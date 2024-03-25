@@ -1,4 +1,4 @@
-**Vehicle Tracking and Counting Using Yolo V8 and Deep Sort**
+**Vehicle Tracking and Counting Using Yolo V8 and DeepSORT**
 
 **Introduction:**
 This document provides an overview of a vehicle tracking project utilizing YOLOv8 (You Only Look Once version 8) for object detection and DeepSORT (Deep Simple Online and Realtime Tracking).
@@ -92,5 +92,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 **References:**
 - YOLOv8 Paper: [Link to YOLOv8 paper]
-- SORT Paper: [Link to SORT paper]
 - DeepSORT Paper: [Link to DeepSORT paper]
