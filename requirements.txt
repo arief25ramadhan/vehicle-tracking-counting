@@ -1,8 +1,7 @@
-numpy
+numpy==1.20.*
 torch
 torchvision
 opencv-python
 scipy
-ultralytics
-supervision
-deep-sort-realtime
+ultralytics==8.1.43
+supervision==0.10.0
