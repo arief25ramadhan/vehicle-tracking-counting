@@ -27,16 +27,27 @@ To use this repository, we need to set up our environment with its required libr
    pip install -r requirements.txt
    ```
 
-3. Inside this current repo, clone the ByteTrack Libraries
+3. Inside this current repo, clone the ByteTrack Libraries:
 
     ```
    git clone https://github.com/ifzhang/ByteTrack.git
    ```
     
-5. Install ByteTrack dependencies
+5. Install ByteTrack dependencies:
    ```
    cd ByteTrack
+   
+   # workaround related to https://github.com/roboflow/notebooks/issues/80
+   sed -i 's/onnx==1.8.1/onnx==1.9.0/g' requirements.txt
+
    pip install -r requirements.txt
+
+   python3 setup.py -q develop
+   pip install -q cython_bbox
+   pip install -q onemetric
+   
+   # workaround related to https://github.com/roboflow/notebooks/issues/112 and https://github.com/roboflow/notebooks/issues/106
+   pip install -q loguru lap thop
    ```
 
 
@@ -44,7 +55,7 @@ To use this repository, we need to set up our environment with its required libr
 
 To perform inference using the vehicle tracker and counter pipeline:
 1. Go to `main.py`. In the last few lines, change the input_video and output_video accordingly. The input_video refers to the video we want to perform tracking and counting on, while the output_video is the desired path of the prediction.
-2. Save changes
+2. Save changes.
 3. Run detection and tracking by executing this command in your terminal:
 
    ```
@@ -54,7 +65,7 @@ To perform inference using the vehicle tracker and counter pipeline:
 4. The predicted video should be available in the output_video path. Figure below displays the example frame of the predicted video.
 
 <p align="center">
-  <img src="assets/output_video.PNG" width="600" title="hover text">
+  <img src="assets/output_video.PNG" width="600" title="Output Video Frame">
 </p>
 
 
