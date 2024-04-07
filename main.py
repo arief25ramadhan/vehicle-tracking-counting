@@ -18,7 +18,9 @@ from yolox.tracker.byte_tracker import BYTETracker, STrack
 
 class vehicle_tracker_and_counter:
 
-    def __init__(self):
+    def __init__(self,
+                source_video_path="assets/vehicle-counting.mp4",
+                target_video_path="assets/vehicle-counting-result.mp4"):
 
         # YOLOv8 Object Detector
         self.model_name = "yolov8x.pt"
@@ -33,8 +35,8 @@ class vehicle_tracker_and_counter:
         self.byte_tracker = BYTETracker(BYTETrackerArgs())
 
         # Video input and output path
-        self.source_video_path = "assets/vehicle-counting.mp4"
-        self.target_video_path = "assets/vehicle-counting-result.mp4"
+        self.source_video_path = source_video_path
+        self.target_video_path = target_video_path
 
         # Create VideoInfo instance
         self.video_info = VideoInfo.from_video_path(self.source_video_path)
@@ -84,3 +86,10 @@ class vehicle_tracker_and_counter:
                 frame = self.box_annotator.annotate(frame=frame, detections=detections, labels=labels)
                 self.line_annotator.annotate(frame=frame, line_counter=self.line_counter)
                 sink.write_frame(frame)
+
+if __name__ == '__main__':
+
+    input_video="assets/vehicle-counting.mp4"
+    output_video="assets/vehicle-counting-result.mp4"
+    pipeline = vehicle_tracker_and_counter(source_video_path=input_video, target_video_path=output_video)
+    pipeline.run()
