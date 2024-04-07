@@ -42,19 +42,20 @@ To use this repository, we need to set up our environment with its required libr
 
 ## 3. Usage
 
-1. Configure input source: Modify the configuration file to specify the input source (e.g., camera feed, video file).
-
-2. Run detection and tracking:
+To perform inference using the vehicle tracker and counter pipeline:
+1. Go to `main.py`. In the last few lines, change the input_video and output_video accordingly. The input_video refers to the video we want to perform tracking and counting on, while the output_video is the desired path of the prediction.
+2. Save changes
+3. Run detection and tracking by executing this command in your terminal:
 
    ```
    python main.py
    ```
 
-3. View the output: The system will generate visualizations displaying vehicle detection and tracking results.
+4. The predicted video should be available in the output_video path. Figure below displays the example frame of the predicted video.
 
-
-## 4. Results
-
+<p align="center">
+  <img src="assets/output_video.PNG" width="600" title="hover text">
+</p>
 
 
 ## References
