@@ -26,8 +26,8 @@ class vehicle_tracker_and_counter:
         self.model.fuse()
   
         # Line for counter
-        self.LINE_START = Point(50, 1500)
-        self.LINE_END = Point(3840-50, 1500)
+        self.line_start = Point(50, 1500)
+        self.line_end = Point(3840-50, 1500)
 
         # BYTETracke Object Tracker
         self.byte_tracker = BYTETracker(BYTETrackerArgs())
@@ -41,7 +41,7 @@ class vehicle_tracker_and_counter:
         # Create frame generator
         self.generator = get_video_frames_generator(self.SOURCE_VIDEO_PATH)
         # Create LineCounter instance
-        self.line_counter = LineCounter(start=self.LINE_START, end=self.LINE_END)
+        self.line_counter = LineCounter(start=self.line_start, end=self.line_end)
         # Create instance of BoxAnnotator and LineCounterAnnotator
         self.box_annotator = BoxAnnotator(color=ColorPalette(), thickness=4, text_thickness=4, text_scale=2)
         self.line_annotator = LineCounterAnnotator(thickness=4, text_thickness=4, text_scale=2)
