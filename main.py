@@ -33,11 +33,11 @@ class vehicle_tracker_and_counter:
         self.byte_tracker = BYTETracker(BYTETrackerArgs())
 
         # Video input and output path
-        self.SOURCE_VIDEO_PATH = "assets/vehicle-counting.mp4"
-        self.TARGET_VIDEO_PATH = "assets/vehicle-counting-result.mp4"
+        self.source_video_path = "assets/vehicle-counting.mp4"
+        self.target_video_path = "assets/vehicle-counting-result.mp4"
 
         # Create VideoInfo instance
-        self.video_info = VideoInfo.from_video_path(self.SOURCE_VIDEO_PATH)
+        self.video_info = VideoInfo.from_video_path(self.source_video_path)
         # Create frame generator
         self.generator = get_video_frames_generator(self.SOURCE_VIDEO_PATH)
         # Create LineCounter instance
@@ -48,7 +48,7 @@ class vehicle_tracker_and_counter:
 
     def run(self):
         # Open target video file
-        with VideoSink(self.TARGET_VIDEO_PATH, self.video_info) as sink:
+        with VideoSink(self.target_video_path, self.video_info) as sink:
             # loop over video frames
             for frame in tqdm(self.generator, total=self.video_info.total_frames):
                 # model prediction on single frame and conversion to supervision Detections
