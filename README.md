@@ -1,4 +1,4 @@
-![image](https://github.com/arief25ramadhan/YOLOv8-Vehicle-Tracking-Counting/assets/28722300/be9df3a3-1b16-47cf-b622-f80a7dad2869)# Vehicle Counting and Tracking using YOLOv8 and ByteTrack
+# Vehicle Counting and Tracking using YOLOv8 and ByteTrack
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
