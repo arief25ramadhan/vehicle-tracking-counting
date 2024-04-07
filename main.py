@@ -20,12 +20,20 @@ class vehicle_tracker_and_counter:
 
     def __init__(self,
                 source_video_path="assets/vehicle-counting.mp4",
-                target_video_path="assets/vehicle-counting-result.mp4"):
-
+                target_video_path="assets/vehicle-counting-result.mp4",
+                use_tensorrt=False):
+        
         # YOLOv8 Object Detector
         self.model_name = "yolov8x.pt"
-        self.model = YOLO(model_name)
-        self.model.fuse()
+        self.yolo = YOLO(model_name)
+
+        if use_tensorrt:
+            self.yolo.export(format='engine')  # creates 'yolov8x.engine'
+            # Load the exported TensorRT model
+            self.model = YOLO('yolov8x.engine')
+        else:
+            self.model = self.yolo
+            self.model.fuse()
   
         # Line for counter
         self.line_start = Point(50, 1500)
@@ -47,6 +55,7 @@ class vehicle_tracker_and_counter:
         # Create instance of BoxAnnotator and LineCounterAnnotator
         self.box_annotator = BoxAnnotator(color=ColorPalette(), thickness=4, text_thickness=4, text_scale=2)
         self.line_annotator = LineCounterAnnotator(thickness=4, text_thickness=4, text_scale=2)
+            
 
     def run(self):
         # Open target video file
