@@ -28,9 +28,14 @@ class vehicle_tracker_and_counter:
         self.yolo = YOLO(model_name)
 
         if use_tensorrt:
-            self.yolo.export(format='engine')  # creates 'yolov8x.engine'
-            # Load the exported TensorRT model
-            self.model = YOLO('yolov8x.engine')
+            try: 
+                # Try to load model if it is already exported
+                self.model = YOLO('yolov8x.engine')
+            except:
+                # Export model
+                self.yolo.export(format='engine')  # creates 'yolov8x.engine'
+                # Load the exported TensorRT model
+                self.model = YOLO('yolov8x.engine')
         else:
             self.model = self.yolo
             self.model.fuse()
