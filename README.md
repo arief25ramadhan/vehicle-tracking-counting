@@ -9,6 +9,7 @@ This project aims to create a vehicle tracking and counting system using the YOL
 - **YOLOv8**: The YOLOv8 model from Ultralytics is utilized for accurate and real-time vehicle detection.  
 - **ByteTrack**: ByteTrack algorithm is employed for multi-object tracking, ensuring smooth and reliable tracking of vehicles across frames.
 - **Line Counter**: We use the supervision library to count the number of vehicles entering or leaving a region.
+- **TensorRT Inference**: Export the model to TensorRT format to speed up inference.
 
 ## 2. Installation
 
@@ -54,7 +55,7 @@ To use this repository, we need to set up our environment with its required libr
 ## 3. Usage
 
 To perform inference using the vehicle tracker and counter pipeline:
-1. Go to `main.py`. In the last few lines, change the input_video and output_video accordingly. The input_video refers to the video we want to perform tracking and counting on, while the output_video is the desired path of the prediction.
+1. Go to `main.py`. In the last few lines, change the `input_video`, `output_video` and `use_tensorrt` variables accordingly. The `input_video` refers to the video we want to perform tracking and counting on, while the `output_video` is the desired path of the prediction. The `use_tensorrt` is a boolean variable indicating whether to use TensorRT format for a quicker inference time.
 2. Save changes.
 3. Run detection and tracking by executing this command in your terminal:
 
