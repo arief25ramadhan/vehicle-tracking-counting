@@ -68,7 +68,12 @@ class vehicle_tracker_and_counter:
             # loop over video frames
             for frame in tqdm(self.generator, total=self.video_info.total_frames):
                 # model prediction on single frame and conversion to supervision Detections
-                results = self.model(frame)
+                start_time = time.time()
+                results = model(frame)
+                end_time = time.time()
+                fps = np.round(1/(end_time - start_time), 2)
+                cv2.putText(frame, f'FPS: {fps}s', (20,100), cv2.FONT_HERSHEY_SIMPLEX, 3, (0,0,255), 3)
+
                 detections = Detections(
                     xyxy=results[0].boxes.xyxy.cpu().numpy(),
                     confidence=results[0].boxes.conf.cpu().numpy(),
