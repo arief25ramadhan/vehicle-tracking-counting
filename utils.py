@@ -2,6 +2,7 @@ import yolox
 from yolox.tracker.byte_tracker import BYTETracker, STrack
 from onemetric.cv.utils.iou import box_iou_batch
 from dataclasses import dataclass
+from supervision.tools.detections import Detections, BoxAnnotator
 
 @dataclass(frozen=True)
 class BYTETrackerArgs:
