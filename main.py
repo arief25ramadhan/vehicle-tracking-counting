@@ -25,7 +25,7 @@ class vehicle_tracker_and_counter:
         
         # YOLOv8 Object Detector
         self.model_name = "yolov8x.pt"
-        self.yolo = YOLO(model_name)
+        self.yolo = YOLO(self.model_name)
 
         if use_tensorrt:
             try: 
