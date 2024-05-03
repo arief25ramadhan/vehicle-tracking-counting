@@ -1,2 +1,4 @@
 ByteTrack/
 __pycache__
+*.mp4
+yolov8x.*

@@ -1,16 +1,17 @@
 # Import Libraries
 import os
+import cv2
 import sys
+import time
 import numpy as np
 from utils import *
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 from ultralytics import YOLO
 from supervision.draw.color import ColorPalette
 from supervision.geometry.dataclasses import Point
 from supervision.video.dataclasses import VideoInfo
 from supervision.video.source import get_video_frames_generator
 from supervision.video.sink import VideoSink
-from supervision.notebook.utils import show_frame_in_notebook
 from supervision.tools.detections import Detections, BoxAnnotator
 from supervision.tools.line_counter import LineCounter, LineCounterAnnotator
 from yolox.tracker.byte_tracker import BYTETracker, STrack
@@ -39,6 +40,9 @@ class vehicle_tracker_and_counter:
         else:
             self.model = self.yolo
             self.model.fuse()
+
+        self.CLASS_NAMES_DICT = self.yolo.model.names
+        self.CLASS_ID = [2, 3, 5, 7]
   
         # Line for counter
         self.line_start = Point(50, 1500)
@@ -54,7 +58,7 @@ class vehicle_tracker_and_counter:
         # Create VideoInfo instance
         self.video_info = VideoInfo.from_video_path(self.source_video_path)
         # Create frame generator
-        self.generator = get_video_frames_generator(self.SOURCE_VIDEO_PATH)
+        self.generator = get_video_frames_generator(self.source_video_path)
         # Create LineCounter instance
         self.line_counter = LineCounter(start=self.line_start, end=self.line_end)
         # Create instance of BoxAnnotator and LineCounterAnnotator
@@ -69,7 +73,7 @@ class vehicle_tracker_and_counter:
             for frame in tqdm(self.generator, total=self.video_info.total_frames):
                 # model prediction on single frame and conversion to supervision Detections
                 start_time = time.time()
-                results = model(frame)
+                results = self.model(frame)
                 end_time = time.time()
                 fps = np.round(1/(end_time - start_time), 2)
                 cv2.putText(frame, f'FPS: {fps}s', (20,100), cv2.FONT_HERSHEY_SIMPLEX, 3, (0,0,255), 3)
@@ -80,10 +84,10 @@ class vehicle_tracker_and_counter:
                     class_id=results[0].boxes.cls.cpu().numpy().astype(int)
                 )
                 # filtering out detections with unwanted classes
-                mask = np.array([class_id in CLASS_ID for class_id in detections.class_id], dtype=bool)
+                mask = np.array([class_id in self.CLASS_ID for class_id in detections.class_id], dtype=bool)
                 detections.filter(mask=mask, inplace=True)
                 # tracking detections
-                tracks = byte_tracker.update(
+                tracks = self.byte_tracker.update(
                     output_results=detections2boxes(detections=detections),
                     img_info=frame.shape,
                     img_size=frame.shape
@@ -95,7 +99,7 @@ class vehicle_tracker_and_counter:
                 detections.filter(mask=mask, inplace=True)
                 # format custom labels
                 labels = [
-                    f"#{tracker_id} {CLASS_NAMES_DICT[class_id]} {confidence:0.2f}"
+                    f"#{tracker_id} {self.CLASS_NAMES_DICT[class_id]} {confidence:0.2f}"
                     for _, confidence, class_id, tracker_id
                     in detections
                 ]
@@ -110,5 +114,5 @@ if __name__ == '__main__':
 
     input_video="assets/vehicle-counting.mp4"
     output_video="assets/vehicle-counting-result.mp4"
-    pipeline = vehicle_tracker_and_counter(source_video_path=input_video, target_video_path=output_video)
+    pipeline = vehicle_tracker_and_counter(source_video_path=input_video, target_video_path=output_video, use_tensorrt=True)
     pipeline.run()
