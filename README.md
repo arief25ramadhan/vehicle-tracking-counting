@@ -18,13 +18,13 @@ To use this repository, we need to set up our environment with its required libr
 1. Clone the repository:
 
    ```
-   git clone https://github.com/arief25ramadhan/YOLOv8-Vehicle-Tracking-Counting.git
+   git clone https://github.com/arief25ramadhan/vehicle-tracking-counting.git
    ```
 
 2. Go to the repository, and install dependencies:
 
    ```
-   cd YOLOv8-Vehicle-Tracking-Counting
+   cd vehicle-tracking-counting
    pip install -r requirements.txt
    ```
 
@@ -34,7 +34,7 @@ To use this repository, we need to set up our environment with its required libr
    git clone https://github.com/ifzhang/ByteTrack.git
    ```
     
-5. Install ByteTrack dependencies:
+4. Install ByteTrack dependencies:
    ```
    cd ByteTrack
    
@@ -43,12 +43,8 @@ To use this repository, we need to set up our environment with its required libr
 
    pip install -r requirements.txt
 
-   python3 setup.py -q develop
-   pip install -q cython_bbox
-   pip install -q onemetric
-   
-   # workaround related to https://github.com/roboflow/notebooks/issues/112 and https://github.com/roboflow/notebooks/issues/106
-   pip install -q loguru lap thop
+   python3 setup.py develop
+   pip install cython_bbox onemetric loguru lap thop
    ```
 
 
